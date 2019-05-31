@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import fetchUser from '../../actions/userActions';
 
-import './userInfo.scss';
+import './user-info.scss';
 
 class UserInfo extends Component {
 	componentDidMount() {
-		this.props.loadUser(23897);
+		this.props.loadUser(1073);
 	}
 	render() {
 		const { user } = this.props;
