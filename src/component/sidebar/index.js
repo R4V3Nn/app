@@ -4,16 +4,16 @@ import { SidePanel } from '@talend/react-components';
 
 export default class Sidebar extends Component {
 	constructor() {
-		super()
+		super();
 		this.state = {
 			docked: true,
 		};
 	}
-	 toggle = () => {
-		 this.setState({
-			 docked: !this.state.docked,
-		 })
-	 }
+	toggle = () => {
+		this.setState({
+			docked: !this.state.docked,
+		});
+	}
 
 	render() {
 		const actions = [

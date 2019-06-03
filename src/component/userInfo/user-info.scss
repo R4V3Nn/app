@@ -2,14 +2,14 @@
 	display: flex;
 	margin: 50px;
 
-	&__image {
+	.image {
 		width: 250px;
 		height: 250px;
-	};
+	}
 
-	&__info {
+	.info {
 		list-style: none;
 		text-transform: capitalize;
 		font-size: 25px;
 	}
-};
+}

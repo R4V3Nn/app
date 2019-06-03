@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fetchUser from '../../actions/userActions';
+import PropTypes from 'prop-types';
+import { fetchUser } from '../../actions/userActions';
+import Spinner from '../Spinner';
 
 import './user-info.scss';
 
 class UserInfo extends Component {
 	componentDidMount() {
-		this.props.loadUser(1073);
+		this.props.loadUser(5);
 	}
 	render() {
 		const { user } = this.props;
-		const fields = ['login', 'name', 'company', 'blog', 'email', 'followers', 'birth_year'];
+		const fields = ['login', 'name', 'company', 'blog', 'email', 'followers'];
+
+		if (!user.login) {
+			return <Spinner />;
+		}
 
 		return (
 			<div className="user">
-				<img className="user__image" src={user.avatar_url} alt="avatar" />
-				<ul className="user__info">
+				<img className="image" src={user.avatar_url} alt="avatar" />
+				<ul className="info">
 					{
 						fields.map(field => (
 							<li key={field}>
-								<span>{`${field.replace('_', ' ')}: `}</span>
+								<span>{`${field}: `}</span>
 								{user[field]}
 							</li>
 						))
@@ -31,6 +37,11 @@ class UserInfo extends Component {
 		);
 	}
 }
+
+UserInfo.propTypes = {
+	user: PropTypes.object.isRequared,
+	loadUser: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
 	user: state.users.user,

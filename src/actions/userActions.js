@@ -1,6 +1,6 @@
 import types from './types';
 
-const fetchUser = id => dispach => {
+export const fetchUser = id => dispach => {
 	fetch(`https://api.github.com/user/${id}`)
 		.then(res => res.json())
 		.then(data => dispach({
@@ -9,4 +9,12 @@ const fetchUser = id => dispach => {
 		}));
 };
 
-export default fetchUser;
+export const fetchRepos = reposUrl => dispach => {
+	fetch(reposUrl)
+		.then(res => res.json())
+		.then(data => dispach({
+			type: types.FETCH_USER_REPOS,
+			payload: data,
+		}));
+};
+
