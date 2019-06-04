@@ -9,12 +9,22 @@ export const fetchUser = id => dispach => {
 		}));
 };
 
-export const fetchRepos = reposUrl => dispach => {
-	fetch(reposUrl)
+export const fetchUserRepos = url => dispatch => {
+	fetch(url)
 		.then(res => res.json())
-		.then(data => dispach({
+		.then(resp => dispatch({
 			type: types.FETCH_USER_REPOS,
-			payload: data,
+			payload: resp,
 		}));
+};
+
+export const fetchRepos = (reposUrl, id) => dispatch => {
+	if (!reposUrl) {
+		fetch(`https://api.github.com/user/${id}`)
+			.then(res => res.json())
+			.then(data => dispatch(fetchUserRepos(data.repos_url)));
+	} else {
+		dispatch(fetchUserRepos(reposUrl));
+	}
 };
 

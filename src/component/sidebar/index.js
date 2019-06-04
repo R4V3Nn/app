@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
 			docked: true,
 		};
 	}
-	toggle = () => {
+	toggleDock = () => {
 		this.setState({
 			docked: !this.state.docked,
 		});
@@ -29,7 +29,11 @@ export default class Sidebar extends Component {
 			},
 		];
 		return (
-			<SidePanel actions={actions} docked={this.state.docked} onToogleDock={() => this.togle()} />
+			<SidePanel
+				actions={actions}
+				docked={this.state.docked}
+				onToggleDock={() => this.toggleDock()}
+			/>
 		);
 	}
 }

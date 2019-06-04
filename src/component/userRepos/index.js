@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { List } from '@talend/react-components';
 import { fetchRepos } from '../../actions/userActions';
 
 import './userRepos.scss';
@@ -8,34 +9,35 @@ import './userRepos.scss';
 
 class UserRepos extends Component {
 	componentDidMount() {
-		this.props.loadRepos('https://api.github.com/users/tomafro/repos');
+		this.props.loadRepos(this.props.reposUrl, 5);
 	}
+
 	render() {
 		const { userRepos } = this.props;
+		const listColumns = [
+			{ key: 'id', label: 'Id', order: 0 },
+			{ key: 'name', label: 'Name', order: 1 },
+			{ key: 'description', label: 'Description', order: 3 },
+			{ key: 'homepage', label: 'Homepage', order: 4 },
+		];
+		const listItems = userRepos && userRepos.map(repo => ({
+			id: repo.id,
+			name: repo.name,
+			description: repo.description,
+			homepage: repo.homepage,
+		}
+		));
+		const listProps = {
+			columns: listColumns,
+			items: listItems,
+		};
 
-		return (
-			<div>
-				<ul className="repos">
-					{
-						userRepos &&
-						userRepos.map(repo => (
-							<li key={repo.id}>
-								{repo.name}
-							</li>
-						))
-
-
-					}
-
-				</ul>
-
-			</div>
-		);
+		return userRepos ? (<List displayMode="table" list={listProps} />) : null;
 	}
 }
 
 UserRepos.propTypes = {
-	userRepos: PropTypes.object.isRequared,
+	userRepos: PropTypes.arrayOf(PropTypes.object),
 	loadRepos: PropTypes.func.isRequired,
 };
 
@@ -45,7 +47,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	loadRepos: url => dispatch(fetchRepos(url)),
+	loadRepos: (url, id) => dispatch(fetchRepos(url, id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRepos);
