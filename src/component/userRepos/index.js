@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { List } from '@talend/react-components';
+import { List, Drawer } from '@talend/react-components';
 import { fetchRepos } from '../../actions/userActions';
 
 import './userRepos.scss';
 
 
 class UserRepos extends Component {
+	constructor() {
+		super();
+		this.state = {
+			showDarwer: false,
+		};
+	}
+
+
 	componentDidMount() {
 		this.props.loadRepos(this.props.reposUrl, 5);
 	}
 
+	showDrawer = () => {
+		this.setState({
+			showDarwer: !this.state.showDarwer,
+		});
+	}
+
+
 	render() {
 		const { userRepos } = this.props;
+		const { showDarwer } = this.state;
 		const listColumns = [
 			{ key: 'id', label: 'Id', order: 0 },
 			{ key: 'name', label: 'Name', order: 1 },
@@ -30,9 +46,18 @@ class UserRepos extends Component {
 		const listProps = {
 			columns: listColumns,
 			items: listItems,
+			titleProps: {
+				onClick: () => this.showDrawer(),
+			},
 		};
 
-		return userRepos ? (<List displayMode="table" list={listProps} />) : null;
+		return userRepos ?
+			(
+				<React.Fragment>
+					<List displayMode="table" list={listProps} />
+					{ showDarwer && <Drawer> {<List displayMode="table" list={listProps} /> }</Drawer> }
+				</React.Fragment>
+			) : null;
 	}
 }
 

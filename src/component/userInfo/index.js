@@ -8,7 +8,7 @@ import './user-info.scss';
 
 class UserInfo extends Component {
 	componentDidMount() {
-		this.props.loadUser(5);
+		this.props.loadUser(7);
 	}
 	render() {
 		const { user } = this.props;
