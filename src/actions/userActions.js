@@ -28,3 +28,7 @@ export const fetchRepos = (reposUrl, id) => dispatch => {
 	}
 };
 
+export const onToggle = id => ({
+	type: types.ITEM_TOGGLE,
+	payload: id,
+});

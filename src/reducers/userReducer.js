@@ -16,6 +16,11 @@ export default function (state = initialState, action) {
 				...state,
 				userRepos: action.payload,
 			};
+		case types.ITEM_TOGGLE:
+			return {
+				...state,
+				selectedId: action.payload,
+			};
 		default:
 			return state;
 	}
