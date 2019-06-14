@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { List, Drawer } from '@talend/react-components';
+import { List } from '@talend/react-components';
+import RepoDrawer from '../RepoDrawer';
 
 import { fetchRepos, onToggle } from '../../actions/userActions';
 
 import './userRepos.scss';
-import { set } from 'react-ga';
 
 
-const getItemProps = props => {
-	console.log(props);
-	return ({
-		classNameKey: 'list-item',
-		onOpen: () => console.log('onItemOpen'),
-		onSelect: (e, item) => console.log('onItemSelect ', item),
-		onToggle: (e, item) => props.onItemToggle(item.id),
-		onToggleAll: () => console.log('onToggleAll'),
-		isSelected: item => item.id === props.selectedId,
-		onCancel: () => console.log('onTitleEditCancel'),
-		onChange: () => console.log('onTitleChange'),
-		onSubmit: () => console.log('onTitleEditSubmit'),
-	});
-};
+const getItemProps = props => ({
+	classNameKey: 'list-item',
+	onOpen: () => console.log('onItemOpen'),
+	onSelect: (e, item) => console.log('onItemSelect ', item),
+	onToggle: (e, item) => props.onItemToggle(item.id),
+	onToggleAll: () => console.log('onToggleAll'),
+	isSelected: item => item.id === props.selectedId,
+	onCancel: () => console.log('onTitleEditCancel'),
+	onChange: () => console.log('onTitleChange'),
+	onSubmit: () => console.log('onTitleEditSubmit'),
+});
 
 const defaultProps = props => ({
 	id: 'talend',
@@ -39,7 +36,10 @@ const defaultProps = props => ({
 			key: 'name',
 			iconKey: 'icon',
 			displayModeKey: 'display',
-			onClick: (e, item) => props.setShowDrawer({ isDrawerShown: !props.isDrawerShown, id: item.id }),
+			onClick: (e, item) => {
+				props.setShowDrawer({ isDrawerShown: !props.isDrawerShown, item });
+				console.log(item);
+			},
 			onEditCancel: () => console.log('onEditCancel'),
 			onEditSubmit: () => console.log('onEditSubmit'),
 		},
@@ -107,17 +107,18 @@ const getListProps = props => {
 				name: repo.name,
 				description: repo.description,
 				homepage: repo.homepage,
+
 			})),
 		},
 	});
-}
+};
 
 function UserRepos(props) {
 	useEffect(() => {
 		props.loadRepos(props.reposUrl, 5);
 	}, [props.reposUrl]);
 
-	const [{ isDrawerShown, id }, setShowDrawer] = useState({isDrawerShown: false, id: null });
+	const [{ isDrawerShown, item }, setShowDrawer] = useState({ isDrawerShown: false, item: null });
 
 	const { userRepos } = props;
 	if (!userRepos) return null;
@@ -127,8 +128,8 @@ function UserRepos(props) {
 	return (
 		<React.Fragment>
 			<List {...listProps} />
-			<button id="1" onClick={e => setShowDrawer({ isDrawerShown: !isDrawerShown, id: '2' })}>Click</button>
-			{ isDrawerShown && <Drawer> Thre should be form {id} </Drawer> }
+			{ isDrawerShown && <RepoDrawer item={userRepos.find(el => el.id === item.id)} />
+			}
 		</React.Fragment>
 	);
 }
