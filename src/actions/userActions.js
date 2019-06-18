@@ -33,7 +33,18 @@ export const onToggle = id => ({
 	payload: id,
 });
 
-export const formSubmit = id => ({
-	types: types.FORM_SUBMIT,
-	payload: id,
-});
+export const formSubmit = (id, formData) => {
+	const newItems = [...state.items];
+	const index = newItems.findIndex(el => el.n === id);
+
+	newItems[index] = { ...formData };
+
+	const newState = {
+		...state,
+		items: newItems,
+	};
+	return {
+		type: types.FORM_SUBMIT,
+		payload: newState,
+	}
+};

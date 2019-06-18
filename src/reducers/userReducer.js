@@ -21,6 +21,10 @@ export default function (state = initialState, action) {
 				...state,
 				selectedId: action.payload,
 			};
+		case types.FORM_SUBMIT:
+			return {
+			
+			}
 		default:
 			return state;
 	}
