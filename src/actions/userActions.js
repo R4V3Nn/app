@@ -32,3 +32,8 @@ export const onToggle = id => ({
 	type: types.ITEM_TOGGLE,
 	payload: id,
 });
+
+export const formSubmit = id => ({
+	types: types.FORM_SUBMIT,
+	payload: id,
+});
