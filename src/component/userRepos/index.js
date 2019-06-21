@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { List } from '@talend/react-components';
 import RepoDrawer from '../RepoDrawer';
 
-import { fetchRepos, onToggle } from '../../actions/userActions';
+import { fetchRepos, onToggle, filterRepos, deleteRepo } from '../../actions/userActions';
 
 import './userRepos.scss';
 
@@ -26,10 +26,10 @@ const defaultProps = props => ({
 	displayMode: 'table',
 	list: {
 		columns: [
-			{ key: 'id', label: 'Id', order: 0 },
-			{ key: 'name', label: 'Name', order: 1 },
-			{ key: 'description', label: 'Description', order: 3 },
-			{ key: 'homepage', label: 'Homepage', order: 4 },
+			{ key: 'name', label: 'Name', order: 0 },
+			{ key: 'description', label: 'Description', order: 1 },
+			{ key: 'homepage', label: 'Homepage', order: 2 },
+			{ key: 'language', label: 'Language', order: 3 },
 		],
 		items: [],
 		titleProps: {
@@ -44,56 +44,68 @@ const defaultProps = props => ({
 			onEditSubmit: () => console.log('onEditSubmit'),
 		},
 	},
-	// toolbar: {
-	// 	// actionBar: {
-	// 	// 	actions: {
-	// 	// 		left: [
-	// 	// 			{
-	// 	// 				id: 'add',
-	// 	// 				label: 'Add Folder',
-	// 	// 				bsStyle: 'info',
-	// 	// 				icon: 'talend-plus-circle',
-	// 	// 				onClick: () => console.log('add.onClick'),
-	// 	// 			},
-	// 	// 			{
-	// 	// 				displayMode: 'splitDropdown',
-	// 	// 				label: 'Add File',
-	// 	// 				icon: 'talend-folder',
-	// 	// 				onClick: () => console.log('onAdd'),
-	// 	// 				items: [
-	// 	// 					{
-	// 	// 						label: 'From Local',
-	// 	// 						onClick: () => console.log('From Local click'),
-	// 	// 					},
-	// 	// 					{
-	// 	// 						label: 'From Remote',
-	// 	// 						onClick: () => console.log('From Remote click'),
-	// 	// 					},
-	// 	// 				],
-	// 	// 				emptyDropdownLabel: 'No option',
-	// 	// 			},
-	// 	// 		],
-	// 	// 	},
-	// 	// },
-	// 	display: {
-	// 		onChange: () => console.log('display.onChange'),
-	// 	},
-	// 	sort: {
-	// 		field: 'name',
-	// 		onChange: () => console.log('sort.onChange'),
-	// 		options: [{ id: 'id', name: 'Id' }, { id: 'name', name: 'Name With Multiple Words' }],
-	// 	},
-	// 	filter: {
-	// 		docked: true,
-	// 		onBlur: () => console.log('filter.onBlur'),
-	// 		onFocus: () => console.log('filter.onFocus'),
-	// 		onFilter: () => console.log('filter.onFilter'),
-	// 		onToggle: () => console.log('filter.onToggle'),
-	// 		placeholder: 'search for something',
-	// 	},
-	// },
+	toolbar: {
+		actionBar: {
+			actions: {
+				left: [
+					{
+						id: 'add',
+						label: 'Add Repo',
+						bsStyle: 'info',
+						icon: 'talend-plus-circle',
+						onClick: () => console.log('add.onClick'),
+					},
+					{
+						id: 'delete',
+						label: 'Delete Repo',
+						bsStyle: 'danger',
+						icon: 'talend-minus-circle',
+						onClick: () => props.deleteRepo(),
+					},
+				],
+			},
+		},
+		// display: {
+		// 	onChange: () => console.log('display.onChange'),
+		// },
+		// sort: {
+		// 	field: 'name',
+		// 	onChange: () => console.log('sort.onChange'),
+		// 	options: [{ id: 'id', name: 'Id' }, { id: 'name', name: 'Name With Multiple Words' }],
+		// },
+		filter: {
+			docked: props.isFilterOpen,
+			onBlur: () => console.log('filter.onBlur'),
+			onFocus: () => console.log('filter.onFocus'),
+			onFilter: (e, str) => props.reposFilter(str),
+			onToggle: () => {
+				props.toggleFilter(!props.isFilterOpen);
+				props.reposFilter('');
+			},
+			placeholder: 'search for something',
+		},
+	},
 });
 
+const getItems = props => {
+	console.log({ filterRepos: props.filteredRepos });
+	let items = [];
+	const generateItem = repo => ({
+		id: repo.id,
+		name: repo.name,
+		description: repo.description,
+		homepage: repo.homepage,
+		language: repo.language,
+
+	});
+
+	if (props.filteredRepos) {
+		items = props.filteredRepos.map(repo => generateItem(repo));
+	} else if (props.userRepos) {
+		items = props.userRepos.map(repo => generateItem(repo));
+	}
+	return items;
+};
 
 const getListProps = props => {
 	const defProps = defaultProps(props);
@@ -102,13 +114,7 @@ const getListProps = props => {
 		list: {
 			...defProps.list,
 			itemProps: getItemProps(props),
-			items: props.userRepos && props.userRepos.map(repo => ({
-				id: repo.id,
-				name: repo.name,
-				description: repo.description,
-				homepage: repo.homepage,
-
-			})),
+			items: getItems(props),
 		},
 	});
 };
@@ -119,11 +125,12 @@ function UserRepos(props) {
 	}, [props.reposUrl]);
 
 	const [{ isDrawerShown, item }, setShowDrawer] = useState({ isDrawerShown: false, item: null });
+	const [isFilterOpen, toggleFilter] = useState(true);
 
 	const { userRepos } = props;
 	if (!userRepos) return null;
 
-	const listProps = userRepos ? getListProps({ ...props, setShowDrawer, isDrawerShown }) : {};
+	const listProps = getListProps({ ...props, setShowDrawer, isDrawerShown, isFilterOpen, toggleFilter });
 
 	return (
 		<React.Fragment>
@@ -137,13 +144,13 @@ function UserRepos(props) {
 
 UserRepos.propTypes = {
 	userRepos: PropTypes.arrayOf(PropTypes.object),
-	loadRepos: PropTypes.func.isRequired,
 	reposUrl: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
 	reposUrl: state.users.user.repos_url,
 	userRepos: state.users.userRepos,
+	filteredRepos: state.users.filteredRepos,
 	selectedId: state.users.selectedId,
 	isDrawerShown: state.users.isDrawerShown,
 });
@@ -151,6 +158,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	loadRepos: (url, id) => dispatch(fetchRepos(url, id)),
 	onItemToggle: id => dispatch(onToggle(id)),
+	reposFilter: str => dispatch(filterRepos(str)),
+	deleteRepo: () => dispatch(deleteRepo()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRepos);

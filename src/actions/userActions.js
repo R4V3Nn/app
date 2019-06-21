@@ -33,18 +33,31 @@ export const onToggle = id => ({
 	payload: id,
 });
 
-export const formSubmit = (id, formData) => {
-	const newItems = [...state.items];
-	const index = newItems.findIndex(el => el.n === id);
+export const updateRepos = repos => dispatch =>
+	dispatch({ type: types.UPDATE_REPOS, payload: repos });
 
-	newItems[index] = { ...formData };
+export const formSubmit = formData => (dispatch, getState) => {
+	const repos = getState().users.userRepos;
+	const updatedRepos = [...repos];
+	const index = updatedRepos.findIndex(el => el.id === formData.id);
 
-	const newState = {
-		...state,
-		items: newItems,
+	updatedRepos[index] = {
+		...updatedRepos[index],
+		...formData,
 	};
-	return {
-		type: types.FORM_SUBMIT,
-		payload: newState,
-	}
+
+	dispatch(updateRepos(updatedRepos));
+};
+
+export const filterRepos = str => (dispatch, getState) => {
+	const repos = getState().users.userRepos;
+	const filteredRepos = repos.filter(item => item.name.length > 1 && item.name.includes(str));
+	dispatch({ type: types.FILTER_REPOS, payload: filteredRepos });
+};
+
+export const deleteRepo = () => (dispatch, getState) => {
+	const repos = getState().users.userRepos;
+	const id = getState().users.selectedId;
+	const newReposList = repos.filter(item => item.id !== id);
+	dispatch({ type: types.DELETE_REPO, payload: newReposList });
 };

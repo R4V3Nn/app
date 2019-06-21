@@ -5,21 +5,8 @@ import DrawerForm from '../DrawerForm';
 import './repoDrawer.scss';
 
 const RepoDrawer = props => (
-	<Drawer>
+	<Drawer title={'REPO INFORMATION:'} footerActions={{}}>
 		<DrawerForm {...props} />
-		{/* <h2>Repo informarion:</h2>
-		<ul className="drawer-items">
-			{
-				Object.keys(item).map(key => (
-					typeof item[key] === 'string' ?
-						<li>
-							<span className="title">{`${key}:`} </span>
-							<span>{`${item[key]}`}</span>
-						</li> : null
-
-				))
-			}
-		</ul> */}
 	</Drawer>
 );
 

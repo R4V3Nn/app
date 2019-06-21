@@ -2,6 +2,7 @@ import types from '../actions/types';
 
 const initialState = {
 	user: {},
+	filteredRepos: null,
 };
 
 export default function (state = initialState, action) {
@@ -16,15 +17,29 @@ export default function (state = initialState, action) {
 				...state,
 				userRepos: action.payload,
 			};
-		case types.ITEM_TOGGLE:
+		case types.ITEM_TOGGLE: {
+			const id = state.selectedId === action.payload ? null : action.payload;
 			return {
 				...state,
-				selectedId: action.payload,
+				selectedId: id,
 			};
-		case types.FORM_SUBMIT:
+		}
+
+		case types.UPDATE_REPOS:
 			return {
-			
-			}
+				...state,
+				userRepos: action.payload,
+			};
+		case types.FILTER_REPOS:
+			return {
+				...state,
+				filteredRepos: action.payload,
+			};
+		case types.DELETE_REPO:
+			return {
+				...state,
+				userRepos: action.payload,
+			};
 		default:
 			return state;
 	}

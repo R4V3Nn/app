@@ -1,15 +1,12 @@
 import React from 'react';
 import Form from '@talend/react-forms';
+import { connect } from 'react-redux';
+import { formSubmit } from '../../actions/userActions';
 
-const data = {
+const formConfig = {
 	jsonSchema: {
-		title: 'Repo information:',
 		type: 'object',
 		properties: {
-			id: {
-				type: 'number',
-				title: 'Id',
-			},
 			name: {
 				type: 'string',
 				title: 'Name',
@@ -38,12 +35,22 @@ const data = {
 	},
 };
 
-const DrawerForm = ({ item }) => {
-	const formConfig = {
-		...data,
-		properties: item,
+const DrawerForm = props => {
+	const formProps = {
+		...formConfig,
+		properties: props.item,
 	};
-	return (<Form data={formConfig} onSubmit={(e, el) => console.log('onSubmit - ', el)} />);
+	return (<Form data={formProps} onSubmit={(e, data) => props.onFormSubmit(data.formData)} />);
 };
 
-export default DrawerForm;
+
+const mapStateToProps = state => ({
+	userRepos: state.users.userRepos,
+	id: state.users.selectedId,
+});
+
+const mapDispatchToProps = dispatch => ({
+	onFormSubmit: (id, formData) => dispatch(formSubmit(id, formData)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerForm);
