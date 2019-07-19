@@ -3,6 +3,7 @@ import types from '../actions/types';
 const initialState = {
 	user: {},
 	filteredRepos: null,
+	selectedIds: [],
 };
 
 export default function (state = initialState, action) {
@@ -18,12 +19,31 @@ export default function (state = initialState, action) {
 				userRepos: action.payload,
 			};
 		case types.ITEM_TOGGLE: {
-			const id = state.selectedId === action.payload ? null : action.payload;
+			const selected = [...state.selectedIds];
+			if (selected.includes(action.payload)) {
+				const index = selected.indexOf(action.payload);
+				selected.splice(index, 1);
+			} else {
+				selected.push(action.payload);
+			}
 			return {
 				...state,
-				selectedId: id,
+				selectedIds: selected,
 			};
 		}
+		case types.SELECT_ALL: {
+			let selected = state.selectedIds;
+			if (selected.length > 0) {
+				selected = [];
+			} else {
+				selected = action.payload;
+			}
+			return {
+				...state,
+				selectedIds: selected,
+			};
+		}
+
 
 		case types.UPDATE_REPOS:
 			return {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { List } from '@talend/react-components';
 import RepoDrawer from '../RepoDrawer';
 
-import { fetchRepos, onToggle, filterRepos, deleteRepo } from '../../actions/userActions';
+import { fetchRepos, onToggle, filterRepos, deleteRepo, onSelectAll } from '../../actions/userActions';
 
 import './userRepos.scss';
 
@@ -14,8 +14,8 @@ const getItemProps = props => ({
 	onOpen: () => console.log('onItemOpen'),
 	onSelect: (e, item) => console.log('onItemSelect ', item),
 	onToggle: (e, item) => props.onItemToggle(item.id),
-	onToggleAll: () => console.log('onToggleAll'),
-	isSelected: item => item.id === props.selectedId,
+	onToggleAll: () => props.selectAll(),
+	isSelected: item => props.selectedIds.includes(item.id),
 	onCancel: () => console.log('onTitleEditCancel'),
 	onChange: () => console.log('onTitleChange'),
 	onSubmit: () => console.log('onTitleEditSubmit'),
@@ -151,13 +151,14 @@ const mapStateToProps = state => ({
 	reposUrl: state.users.user.repos_url,
 	userRepos: state.users.userRepos,
 	filteredRepos: state.users.filteredRepos,
-	selectedId: state.users.selectedId,
+	selectedIds: state.users.selectedIds,
 	isDrawerShown: state.users.isDrawerShown,
 });
 
 const mapDispatchToProps = dispatch => ({
 	loadRepos: (url, id) => dispatch(fetchRepos(url, id)),
 	onItemToggle: id => dispatch(onToggle(id)),
+	selectAll: () => dispatch(onSelectAll()),
 	reposFilter: str => dispatch(filterRepos(str)),
 	deleteRepo: () => dispatch(deleteRepo()),
 });

@@ -33,6 +33,13 @@ export const onToggle = id => ({
 	payload: id,
 });
 
+export const onSelectAll = () => (dispatch, getState) => {
+	const repos = getState().users.userRepos;
+	const ids = repos.map(el => el.id);
+	dispatch({ type: types.SELECT_ALL, payload: ids });
+}
+
+
 export const updateRepos = repos => dispatch =>
 	dispatch({ type: types.UPDATE_REPOS, payload: repos });
 
@@ -57,7 +64,7 @@ export const filterRepos = str => (dispatch, getState) => {
 
 export const deleteRepo = () => (dispatch, getState) => {
 	const repos = getState().users.userRepos;
-	const id = getState().users.selectedId;
-	const newReposList = repos.filter(item => item.id !== id);
+	const id = getState().users.selectedIds;
+	const newReposList = repos.filter(item => !(id.includes(item.id)));
 	dispatch({ type: types.DELETE_REPO, payload: newReposList });
 };
