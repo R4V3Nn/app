@@ -20,12 +20,12 @@ export default class Sidebar extends Component {
 			{
 				label: 'About',
 				icon: 'talend-user-circle',
-				onClick: () => hashHistory.push('#about'),
+				onClick: () => hashHistory.push('/#about'),
 			},
 			{
 				label: 'Repos',
 				icon: 'talend-hierarchical-view',
-				onClick: () => hashHistory.push('#repos'),
+				onClick: () => hashHistory.push('/#repos'),
 			},
 		];
 		return (
