@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from '@talend/react-forms';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { formSubmit } from '../../actions/userActions';
 
@@ -52,5 +53,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	onFormSubmit: (id, formData) => dispatch(formSubmit(id, formData)),
 });
+
+DrawerForm.propTypes = {
+	item: PropTypes.object,
+	onFormSubmit: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DrawerForm);

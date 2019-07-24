@@ -3,7 +3,6 @@ const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const AppLoaderScript = require('@talend/react-components/lib/AppLoader/constant');
@@ -20,7 +19,7 @@ const envVars = {
 	'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
 };
 const isDev = process.env.NODE_ENV !== 'production';
-let generateIndex = {
+const generateIndex = {
 	title: 'App',
 	env: envVars,
 	template: INDEX_TEMPLATE_PATH,
@@ -28,8 +27,6 @@ let generateIndex = {
 	loaderStyle: AppLoaderScript.default.getLoaderStyle(ICON),
 	loader: AppLoaderScript.default.APP_LOADER,
 };
-
-
 
 function getCommonStyleLoaders(enableModules) {
 	const cssOptions = enableModules

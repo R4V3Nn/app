@@ -1,9 +1,10 @@
 {
-  "name": "login-page",
+  "name": "page",
   "version": "1.0.0",
-  "description": "Log in page for Talend",
+  "description": "My page",
   "license": "Apache-2.0",
   "author": "Platform Services Team",
+  "homepage": "https://r4v3nn.github.io/Github-users/",
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/test-setup.js"
@@ -35,6 +36,7 @@
     ]
   },
   "scripts": {
+    "deploy": "npm run webpack-build&&gh-pages -d dist",
     "postinstall": "npm rebuild node-sass",
     "lint-es": "eslint --config .eslintrc src/**/*",
     "lint-sass": "sass-lint -q -v",
@@ -82,6 +84,7 @@
     "eslint-plugin-react": "^6.3.0",
     "fetch-mock": "^5.13.1",
     "file-loader": "^2.0.0",
+    "gh-pages": "^2.0.1",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^3.2.0",
     "i18next-parser": "^0.13.0",

@@ -11,14 +11,14 @@ import './userRepos.scss';
 
 const getItemProps = props => ({
 	classNameKey: 'list-item',
-	onOpen: () => console.log('onItemOpen'),
-	onSelect: (e, item) => console.log('onItemSelect ', item),
+	// onOpen: () => console.log('onItemOpen'),
+	// onSelect: (e, item) => console.log('onItemSelect ', item),
 	onToggle: (e, item) => props.onItemToggle(item.id),
 	onToggleAll: () => props.selectAll(),
 	isSelected: item => props.selectedIds.includes(item.id),
-	onCancel: () => console.log('onTitleEditCancel'),
-	onChange: () => console.log('onTitleChange'),
-	onSubmit: () => console.log('onTitleEditSubmit'),
+	// onCancel: () => console.log('onTitleEditCancel'),
+	// onChange: () => console.log('onTitleChange'),
+	// onSubmit: () => console.log('onTitleEditSubmit'),
 });
 
 const defaultProps = props => ({
@@ -38,10 +38,9 @@ const defaultProps = props => ({
 			displayModeKey: 'display',
 			onClick: (e, item) => {
 				props.setShowDrawer({ isDrawerShown: !props.isDrawerShown, item });
-				console.log(item);
 			},
-			onEditCancel: () => console.log('onEditCancel'),
-			onEditSubmit: () => console.log('onEditSubmit'),
+			// onEditCancel: () => console.log('onEditCancel'),
+			// onEditSubmit: () => console.log('onEditSubmit'),
 		},
 	},
 	toolbar: {
@@ -53,7 +52,7 @@ const defaultProps = props => ({
 						label: 'Add Repo',
 						bsStyle: 'info',
 						icon: 'talend-plus-circle',
-						onClick: () => console.log('add.onClick'),
+						// onClick: () => console.log('add.onClick'),
 					},
 					{
 						id: 'delete',
@@ -75,8 +74,8 @@ const defaultProps = props => ({
 		// },
 		filter: {
 			docked: props.isFilterOpen,
-			onBlur: () => console.log('filter.onBlur'),
-			onFocus: () => console.log('filter.onFocus'),
+			// onBlur: () => console.log('filter.onBlur'),
+			// onFocus: () => console.log('filter.onFocus'),
 			onFilter: (e, str) => props.reposFilter(str),
 			onToggle: () => {
 				props.toggleFilter(!props.isFilterOpen);
@@ -88,7 +87,7 @@ const defaultProps = props => ({
 });
 
 const getItems = props => {
-	console.log({ filterRepos: props.filteredRepos });
+	// console.log({ filterRepos: props.filteredRepos });
 	let items = [];
 	const generateItem = repo => ({
 		id: repo.id,
@@ -130,7 +129,8 @@ function UserRepos(props) {
 	const { userRepos } = props;
 	if (!userRepos) return null;
 
-	const listProps = getListProps({ ...props, setShowDrawer, isDrawerShown, isFilterOpen, toggleFilter });
+	const listProps = getListProps(
+		{ ...props, setShowDrawer, isDrawerShown, isFilterOpen, toggleFilter });
 
 	return (
 		<React.Fragment>

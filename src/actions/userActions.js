@@ -37,7 +37,7 @@ export const onSelectAll = () => (dispatch, getState) => {
 	const repos = getState().users.userRepos;
 	const ids = repos.map(el => el.id);
 	dispatch({ type: types.SELECT_ALL, payload: ids });
-}
+};
 
 
 export const updateRepos = repos => dispatch =>

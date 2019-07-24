@@ -18,7 +18,7 @@ const Wrapper = props => (
 	</div>
 );
 
-Wrapper.propTypes ={
-	children: PropTypes.element
-}
+Wrapper.propTypes = {
+	children: PropTypes.element,
+};
 export default Wrapper;
