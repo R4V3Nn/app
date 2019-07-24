@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
+import { HashRouter, Route, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import '@talend/bootstrap-theme/src/theme/theme.scss';
 
@@ -11,7 +11,7 @@ import UserRepos from '../UserRepos';
 import store from '../../store';
 
 const modules = [{
-	path: '/about',
+	path: '*',
 	component: UserInfo,
 	exact: true,
 }, {
@@ -20,13 +20,13 @@ const modules = [{
 }];
 
 // Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 
 const App = () => (
 	<div className="t7">
 		<Provider store={store}>
-			<Router history={history}>
+			<HashRouter history={history}>
 				<Route path="/" component={Wrapper}>
 					{
 						modules.map(module => (
@@ -34,7 +34,7 @@ const App = () => (
 						))
 					}
 				</Route>
-			</Router>
+			</HashRouter>
 		</Provider>
 	</div>
 );
