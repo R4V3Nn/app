@@ -26,7 +26,7 @@ const history = syncHistoryWithStore(hashHistory, store);
 const App = () => (
 	<div className="t7">
 		<Provider store={store}>
-			<HashRouter history={history}>
+			<HashRouter basename={process.env.PUBLIC_URL} history={history}>
 				<Route path="/" component={Wrapper}>
 					{
 						modules.map(module => (
