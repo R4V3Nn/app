@@ -11,7 +11,7 @@ import UserRepos from '../UserRepos';
 import store from '../../store';
 
 const modules = [{
-	path: '/about',
+	path: '*',
 	component: UserInfo,
 	exact: true,
 }, {
