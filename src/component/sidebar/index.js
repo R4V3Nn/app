@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { SidePanel } from '@talend/react-components';
 
 export default class Sidebar extends Component {
@@ -20,12 +20,12 @@ export default class Sidebar extends Component {
 			{
 				label: 'About',
 				icon: 'talend-user-circle',
-				onClick: () => hashHistory.push('/#about'),
+				onClick: () => browserHistory.push('/about'),
 			},
 			{
 				label: 'Repos',
 				icon: 'talend-hierarchical-view',
-				onClick: () => hashHistory.push('/#repos'),
+				onClick: () => browserHistory.push('/repos'),
 			},
 		];
 		return (
