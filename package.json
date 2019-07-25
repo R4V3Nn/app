@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "My page",
   "license": "Apache-2.0",
-  "author": "Platform Services Team",
+  "author": "Artem",
   "homepage": "https://r4v3nn.github.io/Github-users/",
+  "engines": {
+    "npm": "6.10.1",
+    "node": "10.16.0"
+  },
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/test-setup.js"
