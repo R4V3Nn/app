@@ -15,7 +15,7 @@ const modules = [{
 	component: UserInfo,
 	exact: true,
 }, {
-	path: '/repos',
+	path: 'repos',
 	component: UserRepos,
 }];
 
