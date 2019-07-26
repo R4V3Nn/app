@@ -11,11 +11,11 @@ import UserRepos from '../UserRepos';
 import store from '../../store';
 
 const modules = [{
-	path: '*',
+	path: '/about',
 	component: UserInfo,
 	exact: true,
 }, {
-	path: 'repos',
+	path: '/repos',
 	component: UserRepos,
 }];
 
