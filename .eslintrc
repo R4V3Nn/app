@@ -1,12 +1,11 @@
 {
 	"settings": {
-        "import/resolver": {
-            "node": {
-                "paths": ["src"],
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
-            }
-        }
-    },
+		"import/resolver": {
+		  "alias": [
+			["app/src", "./component/App"]
+		   ]
+		 }
+	  },
     "extends": "airbnb",
     "parser": "babel-eslint",
     "rules": {
