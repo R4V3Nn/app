@@ -11,11 +11,10 @@ import UserRepos from '../UserRepos';
 import store from '../../store';
 
 const modules = [{
-	path: '/about',
+	path: 'https://github-usr.herokuapp.com/about',
 	component: UserInfo,
-	exact: true,
 }, {
-	path: '/repos',
+	path: 'https://github-usr.herokuapp.com/repos',
 	component: UserRepos,
 }];
 
