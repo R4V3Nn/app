@@ -1,4 +1,12 @@
 {
+	"settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["src"],
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    },
     "extends": "airbnb",
     "parser": "babel-eslint",
     "rules": {
