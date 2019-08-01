@@ -20,12 +20,12 @@ export default class Sidebar extends Component {
 			{
 				label: 'About',
 				icon: 'talend-user-circle',
-				onClick: () => browserHistory.push('/about'),
+				onClick: () => browserHistory.push('https://github-usr.herokuapp.com/about'),
 			},
 			{
 				label: 'Repos',
 				icon: 'talend-hierarchical-view',
-				onClick: () => browserHistory.push('/repos'),
+				onClick: () => browserHistory.push('https://github-usr.herokuapp.com/repos'),
 			},
 		];
 		return (
