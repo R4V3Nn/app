@@ -158,6 +158,7 @@
     "redux-thunk": "^2.3.0",
     "request": "2.88.0",
     "urijs": "1.18.10",
-    "whatwg-fetch": "^2.0.3"
+	"whatwg-fetch": "^2.0.3",
+	"express": "4.17.1"
   }
 }
