@@ -6,7 +6,7 @@ export default class Sidebar extends Component {
 	constructor() {
 		super();
 		this.state = {
-			docked: true,
+			docked: false,
 		};
 	}
 	toggleDock = () => {
@@ -20,12 +20,12 @@ export default class Sidebar extends Component {
 			{
 				label: 'About',
 				icon: 'talend-user-circle',
-				onClick: () => browserHistory.push('https://github-usr.herokuapp.com/about'),
+				onClick: () => browserHistory.push('/about'),
 			},
 			{
 				label: 'Repos',
 				icon: 'talend-hierarchical-view',
-				onClick: () => browserHistory.push('https://github-usr.herokuapp.com/repos'),
+				onClick: () => browserHistory.push('/repos'),
 			},
 		];
 		return (
