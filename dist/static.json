@@ -1,6 +1,8 @@
 {
 	"root": "dist/",
 	"routes": {
-	  "*": "index.html"
-	}
+		"/about/*": "/about/",
+		"/repos/*": "/repos/",
+		"/**": "index.html"
+	  }
   }
