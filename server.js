@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
+app.get('/:path', (req, res) => {
+	res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 app.get('/test', (req, res) => {
 	res.send(`
 		<html>
