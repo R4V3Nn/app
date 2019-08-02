@@ -9,4 +9,7 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-app.listen(9000);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Mixing it up on port ${PORT}`);
+});
