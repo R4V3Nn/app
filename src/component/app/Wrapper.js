@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Layout, IconsProvider } from '@talend/react-components';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
+import Welcome from './Welcome';
 
 const Wrapper = props => (
 	<div>
@@ -13,7 +14,7 @@ const Wrapper = props => (
 			mode="TwoColumns"
 			one={<Sidebar />}
 		>
-			{props.children}
+			{!props.children ? <Welcome /> : props.children }
 		</Layout>
 	</div>
 );

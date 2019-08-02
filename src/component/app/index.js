@@ -10,13 +10,13 @@ import UserInfo from '../UserInfo';
 import UserRepos from '../UserRepos';
 import store from '../../store';
 
-const modules = [{
-	path: '/about',
-	component: UserInfo,
-}, {
-	path: '/repos',
-	component: UserRepos,
-}];
+// const modules = [{
+// 	path: '/about',
+// 	component: UserInfo,
+// }, {
+// 	path: '/repos',
+// 	component: UserRepos,
+// }];
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -27,11 +27,8 @@ const App = () => (
 		<Provider store={store}>
 			<Router history={history}>
 				<Route path="/" component={Wrapper}>
-					{
-						modules.map(module => (
-							<Route path={module.path} component={module.component} exact={module.exact} />
-						))
-					}
+					<Route path="about" component={UserInfo} exact />
+					<Route path="repos" component={UserRepos} exact />
 				</Route>
 			</Router>
 		</Provider>
