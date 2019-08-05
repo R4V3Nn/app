@@ -45,7 +45,7 @@
     "lint-es": "eslint --config .eslintrc ./src/*",
     "lint-sass": "sass-lint -q -v",
     "lint": "yarn run lint-es && yarn run lint-sass",
-    "start": "node server.js",
+    "start": "webpack-dev-server --mode development --open",
     "debug": "cross-env NODE_ENV=production node $NODE_DEBUG_OPTION ./node_modules/.bin/webpack-dev-server",
     "test": "jest",
     "test:watch": "jest --watch",

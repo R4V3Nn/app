@@ -1,8 +1,16 @@
-.welcome h1 {
+.welcome {
 	text-align: center;
-    margin-top: 100px;
-	font-size: 40px;
-	background: -webkit-linear-gradient(#eee, #333);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	margin-top: 100px;
+	h1 {
+		margin-bottom: 40px;
+		font-size: 72px;
+		background: linear-gradient(to right, #660fcf, #05c9f9);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	h3 {
+		font-size: 36px;
+		color: gray;
+		font-weight: 200;
+	}
 }
