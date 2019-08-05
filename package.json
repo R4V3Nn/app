@@ -42,7 +42,7 @@
   "scripts": {
     "deploy": "npm run webpack-build && gh-pages -d dist",
     "postinstall": "npm rebuild node-sass",
-    "lint-es": "eslint --config .eslintrc src/**/*",
+    "lint-es": "eslint --config .eslintrc ./src/*",
     "lint-sass": "sass-lint -q -v",
     "lint": "yarn run lint-es && yarn run lint-sass",
     "start": "node server.js",

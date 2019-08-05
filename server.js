@@ -15,5 +15,5 @@ app.get('/:path', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-	console.log(`Mixing it up on port ${PORT}`);
+	console.info(`Mixing it up on port ${PORT}`);
 });
