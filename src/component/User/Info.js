@@ -6,7 +6,7 @@ import Spinner from '../Spinner';
 
 import './user-info.scss';
 
-class UserInfo extends Component {
+export class UserInfo extends Component {
 	componentDidMount() {
 		this.props.loadUser(7);
 	}
