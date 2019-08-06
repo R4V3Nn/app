@@ -6,8 +6,8 @@ import '@talend/bootstrap-theme/src/theme/theme.scss';
 
 import './app.scss';
 import Wrapper from './Wrapper';
-import UserInfo from '../UserInfo/Info';
-import UserRepos from '../UserRepos/Repos';
+import UserInfo from '../User/Info';
+import UserRepos from '../User/Repos';
 import store from '../../store';
 
 // const modules = [{
