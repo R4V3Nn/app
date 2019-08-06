@@ -16,15 +16,13 @@
 		"no-console": ["error", { "allow": ["info", "warn", "error"] }],
 		"react/require-extension": "off",
 		 "settings": {
-			"import/resolver": {
-			  "webpack": {
-				"config": {
-				  "resolve": {
-					"modules": ["node_modules"]
+			"settings": {
+				"import/resolver": {
+				  "node": {
+					"extensions": [".js", ".jsx", ".ts", ".tsx"]
 				  }
 				}
-			  }
-			}
+			  },
 		  }
 	},
 	"env": {
