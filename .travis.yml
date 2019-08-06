@@ -3,9 +3,9 @@ node_js: 10.15.0
 cache: npm
 
 install:
-  - yarn
+  - npm i
 
 script:
-  - yarn lint
+  - npm run lint
 
 
