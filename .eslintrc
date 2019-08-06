@@ -15,14 +15,12 @@
 		"react/forbid-prop-types": [0],
 		"no-console": ["error", { "allow": ["info", "warn", "error"] }],
 		"react/require-extension": "off",
-		 "settings": {
-			"settings": {
-				"import/resolver": {
-				  "node": {
-					"extensions": [".js", ".jsx", ".ts", ".tsx"]
-				  }
+		"settings": {
+			"import/resolver": {
+				"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
 				}
-			  },
+			}
 		  }
 	},
 	"env": {
