@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { SidePanel } from '@talend/react-components';
 
+const actions = [
+	{
+		label: 'About',
+		icon: 'talend-user-circle',
+		onClick: () => browserHistory.push('/about'),
+	},
+	{
+		label: 'Repos',
+		icon: 'talend-hierarchical-view',
+		onClick: () => browserHistory.push('/repos'),
+	},
+];
 export default class Sidebar extends Component {
 	constructor() {
 		super();
@@ -9,25 +21,13 @@ export default class Sidebar extends Component {
 			docked: false,
 		};
 	}
-	toggleDock = () => {
+	toggleDock() {
 		this.setState({
 			docked: !this.state.docked,
 		});
 	}
 
 	render() {
-		const actions = [
-			{
-				label: 'About',
-				icon: 'talend-user-circle',
-				onClick: () => browserHistory.push('/about'),
-			},
-			{
-				label: 'Repos',
-				icon: 'talend-hierarchical-view',
-				onClick: () => browserHistory.push('/repos'),
-			},
-		];
 		return (
 			<SidePanel
 				actions={actions}
