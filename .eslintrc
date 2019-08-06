@@ -14,14 +14,7 @@
 		"linebreak-style": 0,
 		"react/forbid-prop-types": [0],
 		"no-console": ["error", { "allow": ["info", "warn", "error"] }],
-		"react/require-extension": "off",
-		"settings": {
-			"import/resolver": {
-				"node": {
-				"extensions": [".js", ".jsx", ".ts", ".tsx"]
-				}
-			}
-		  }
+		"react/require-extension": "off"		
 	},
 	"env": {
 		"es6": true,
