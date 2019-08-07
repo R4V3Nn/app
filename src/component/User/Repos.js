@@ -118,7 +118,7 @@ const getListProps = props => {
 	});
 };
 
-function UserRepos(props) {
+export function UserRepos(props) {
 	useEffect(() => {
 		props.loadRepos(props.reposUrl, 5);
 	}, [props.reposUrl]);

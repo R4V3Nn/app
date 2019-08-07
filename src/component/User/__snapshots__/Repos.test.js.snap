@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Repos component should render Repos component 1`] = `
+<UserRepos
+  deleteRepo={[MockFunction]}
+  filteredRepos={Array []}
+  isDrawerShown={false}
+  loadRepos={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "https://api.github.com/repos",
+          5,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  onItemToggle={[MockFunction]}
+  reposFilter={[MockFunction]}
+  reposUrl="https://api.github.com/repos"
+  selectAll={[MockFunction]}
+  selectedIds={
+    Array [
+      "11374954",
+    ]
+  }
+  userRepos={
+    Array [
+      Object {
+        "clone_url": "https://github.com/evanphx/ace.git",
+        "created_at": "2013-07-12T18:12:26Z",
+        "description": "Ace (Ajax.org Cloud9 Editor)",
+        "fork": true,
+        "full_name": "evanphx/ace",
+        "git_url": "git://github.com/evanphx/ace.git",
+        "homepage": "http://ace.ajax.org",
+        "html_url": "https://github.com/evanphx/ace",
+        "id": 11374954,
+        "language": "JavaScript",
+        "name": "ace",
+        "node_id": "MDEwOlJlcG9zaXRvcnkxMTM3NDk1NA==",
+        "private": false,
+        "pushed_at": "2013-07-12T07:04:43Z",
+        "svn_url": "https://github.com/evanphx/ace",
+        "updated_at": "2018-02-18T20:56:11Z",
+        "url": "https://api.github.com/repos/evanphx/ace",
+      },
+      Object {
+        "clone_url": "https://github.com/evanphx/ace.git",
+        "created_at": "2013-07-12T18:12:26Z",
+        "description": "Ace (Ajax.org Cloud9 Editor)",
+        "fork": true,
+        "full_name": "evanphx/ace",
+        "git_url": "git://github.com/evanphx/ace.git",
+        "homepage": "http://ace.ajax.org",
+        "html_url": "https://github.com/evanphx/ace",
+        "id": 53301806,
+        "language": "JavaScript",
+        "name": "ace",
+        "node_id": "MDEwOlJlcG9zaXRvcnkxMTM3NDk1NA==",
+        "private": false,
+        "pushed_at": "2013-07-12T07:04:43Z",
+        "svn_url": "https://github.com/evanphx/ace",
+        "updated_at": "2018-02-18T20:56:11Z",
+        "url": "https://api.github.com/repos/evanphx/ace",
+      },
+    ]
+  }
+/>
+`;
