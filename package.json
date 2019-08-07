@@ -7,7 +7,7 @@
   "homepage": "https://r4v3nn.github.io/Github-users/",
   "engines": {
     "npm": "6.10.1",
-    "node": "10.16.0"
+    "node": "10.16.1"
   },
   "jest": {
     "setupFilesAfterEnv": [
