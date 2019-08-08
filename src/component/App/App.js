@@ -7,7 +7,7 @@ import '@talend/bootstrap-theme/src/theme/theme.scss';
 import './app.scss';
 import Wrapper from './Wrapper';
 import User from '../User/Info';
-import UserRepos from '../User/Repos';
+import Repos from '../User/Repos';
 import store from '../../store';
 
 // Create an enhanced history that syncs navigation events with the store
@@ -19,7 +19,7 @@ const App = () => (
 			<Router history={history}>
 				<Route path="/" component={Wrapper}>
 					<Route path="about" component={User} exact />
-					<Route path="repos" component={UserRepos} exact />
+					<Route path="repos" component={Repos} exact />
 				</Route>
 			</Router>
 		</Provider>
