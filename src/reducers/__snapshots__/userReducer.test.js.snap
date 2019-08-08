@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FETCH_USER is correct 1`] = `
+Object {
+  "filteredRepos": null,
+  "selectedIds": Array [],
+  "user": Object {},
+}
+`;
+
+exports[`userReducer is correct 1`] = `
+Object {
+  "filteredRepos": null,
+  "selectedIds": Array [],
+  "user": Object {},
+}
+`;
