@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header  component should render Header  component 1`] = `
+<Translate(HeaderBar)
+  brand={
+    Object {
+      "id": "brand",
+      "label": "My App",
+    }
+  }
+/>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepoDrawer component should render RepoDrawer component 1`] = `
+<Drawer
+  footerActions={Object {}}
+  title="REPO INFORMATION:"
+  withTransition={true}
+>
+  <Connect(DrawerForm) />
+</Drawer>
+`;

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrawerForm component should render DrawerForm component 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(Symbol.observable): [Function],
+    }
+  }
+>
+  <Connect(DrawerForm)
+    jsonSchema={
+      Object {
+        "properties": Object {
+          "description": Object {
+            "title": "Description",
+            "type": "string",
+          },
+          "homepage": Object {
+            "title": "Homepage",
+            "type": "string",
+          },
+          "html_url": Object {
+            "title": "Url",
+            "type": "string",
+          },
+          "language": Object {
+            "title": "language",
+            "type": "string",
+          },
+          "name": Object {
+            "title": "Name",
+            "type": "string",
+          },
+          "size": Object {
+            "title": "Size",
+            "type": "number",
+          },
+        },
+        "type": "object",
+      }
+    }
+    onSubmit={[MockFunction]}
+  />
+</Provider>
+`;

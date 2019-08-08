@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar component should render Sidebar component 1`] = `
+<Translate(SidePanel)
+  actions={
+    Array [
+      Object {
+        "icon": "talend-user-circle",
+        "label": "About",
+        "onClick": [Function],
+      },
+      Object {
+        "icon": "talend-hierarchical-view",
+        "label": "Repos",
+        "onClick": [Function],
+      },
+    ]
+  }
+  docked={false}
+  onToggleDock={[Function]}
+/>
+`;

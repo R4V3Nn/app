@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemList component should render ItemList component 1`] = `
+<List
+  displayMode="table"
+/>
+`;
