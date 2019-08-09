@@ -1,20 +1,53 @@
 import userReducer from './userReducer';
-import { FETCH_USER } from '../actions/types';
+import types from '../actions/types';
+
+const initialState = {
+	filteredRepos: null,
+	selectedIds: [],
+	user: {},
+};
 
 describe('userReducer', () => {
-	test('is correct', () => {
-		const action = { type: 'default_action' };
+	it('should return the initial state', () => {
+		expect(userReducer(undefined, {})).toEqual(initialState);
+	});
 
+	it('check FETCH_USER case', () => {
+		const state = {
+			...initialState,
+			user: {
+				id: 'id',
+				name: 'Tony Stark',
+			},
+		};
+		const action = {
+			type: types.FETCH_USER,
+			payload: {
+				id: 'id',
+				name: 'Tony Stark',
+			},
+		};
 
-		expect(userReducer(undefined, action)).toMatchSnapshot();
+		expect(userReducer(initialState, action)).toEqual(state);
+	});
+
+	it('check FETCH_USER_REPOS case', () => {
+		const state = {
+			...initialState,
+			userRepos: {
+				id: 'id',
+				name: 'App',
+			},
+		};
+		const action = {
+			type: types.FETCH_USER_REPOS,
+			payload: {
+				id: 'id',
+				name: 'App',
+			},
+		};
+
+		expect(userReducer(initialState, action)).toEqual(state);
 	});
 });
 
-describe('FETCH_USER', () => {
-	test('is correct', () => {
-		const action = { type: FETCH_USER, payload: [] };
-
-
-		expect(userReducer(undefined, action)).toMatchSnapshot();
-	});
-});
