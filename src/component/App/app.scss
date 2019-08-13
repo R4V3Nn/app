@@ -6,7 +6,8 @@
 		margin-bottom: 40px;
 		font-size: 72px;
 		background: linear-gradient(to right, #660FCF, #05C9F9);
-		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	h3 {
