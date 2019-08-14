@@ -19,7 +19,7 @@ export class Users extends Component {
 		}
 
 		const ListOfUsers = users.map(user => <li>
-			Login: <span>{user.login}</span> <a href={user.html_url}>open repo</a></li>);
+			Login: <span>{user.login}</span> <a href={user.html_url} target="_balnk" noreffer nofollow>open repo</a></li>);
 
 		return (
 			<div className="users">
