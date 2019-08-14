@@ -6,6 +6,7 @@ exports[`Header  component should render Header  component 1`] = `
     Object {
       "id": "brand",
       "label": "My App",
+      "onClick": [Function],
     }
   }
 />
