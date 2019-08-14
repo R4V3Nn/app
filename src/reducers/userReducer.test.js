@@ -5,6 +5,7 @@ const initialState = {
 	filteredRepos: null,
 	selectedIds: [],
 	user: {},
+	users: [],
 };
 
 describe('userReducer', () => {
