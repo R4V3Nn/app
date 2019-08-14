@@ -18,7 +18,7 @@ const App = () => (
 	<div className="t7">
 		<Provider store={store}>
 			<Router history={history}>
-				<Route path="/" component={Wrapper}>
+				<Route path="/" component={Wrapper} exact >
 					<Route path="about" component={User} exact />
 					<Route path="repos" component={Repos} exact />
 					<Route path="users" component={UsersList} exact />
