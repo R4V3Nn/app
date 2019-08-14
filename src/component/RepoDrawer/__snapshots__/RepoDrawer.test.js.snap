@@ -1,11 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RepoDrawer component should render RepoDrawer component 1`] = `
-<Drawer
-  footerActions={Object {}}
-  title="REPO INFORMATION:"
-  withTransition={true}
+<DrawerContainer
+  stacked={false}
 >
-  <Connect(DrawerForm) />
-</Drawer>
+  <DrawerTitle
+    onCancelAction={
+      Object {
+        "bsStyle": "default btn-inverse",
+        "label": "Cancel",
+        "name": "cancel",
+        "onClick": [Function],
+      }
+    }
+    title="Repo edit"
+  />
+  <DrawerContent>
+    <Connect(DrawerForm) />
+  </DrawerContent>
+</DrawerContainer>
 `;
