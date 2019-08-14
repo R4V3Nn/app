@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { List } from '@talend/react-components';
 import RepoDrawer from '../RepoDrawer';
 
-import { fetchRepos, onToggle, filterRepos, deleteRepo, onSelectAll } from '../../actions/userActions';
+import { fetchRepos, onToggle, formSubmit,
+	filterRepos, deleteRepo, onSelectAll,
+ } from '../../actions/userActions';
 
 import './userRepos.scss';
 
@@ -126,7 +128,7 @@ export function UserRepos(props) {
 	const [{ isDrawerShown, item }, setShowDrawer] = useState({ isDrawerShown: false, item: null });
 	const [isFilterOpen, toggleFilter] = useState(true);
 
-	const { userRepos } = props;
+	const { userRepos, onRepoSubmit } = props;
 	if (!userRepos) return null;
 
 	const listProps = getListProps(
@@ -135,7 +137,12 @@ export function UserRepos(props) {
 	return (
 		<React.Fragment>
 			<List {...listProps} />
-			{ isDrawerShown && <RepoDrawer item={userRepos.find(el => el.id === item.id)} />
+			{ isDrawerShown &&
+				<RepoDrawer
+					onClose={setShowDrawer}
+					onSubmit={onRepoSubmit}
+					item={userRepos.find(el => el.id === item.id)}
+				/>
 			}
 		</React.Fragment>
 	);
@@ -145,6 +152,7 @@ export function UserRepos(props) {
 UserRepos.propTypes = {
 	userRepos: PropTypes.arrayOf(PropTypes.object),
 	reposUrl: PropTypes.string,
+	onRepoSubmit: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -161,6 +169,7 @@ const mapDispatchToProps = dispatch => ({
 	selectAll: () => dispatch(onSelectAll()),
 	reposFilter: str => dispatch(filterRepos(str)),
 	deleteRepo: () => dispatch(deleteRepo()),
+	onRepoSubmit: formData => dispatch(formSubmit(formData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRepos);

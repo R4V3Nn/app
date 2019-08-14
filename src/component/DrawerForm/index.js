@@ -2,7 +2,6 @@ import React from 'react';
 import Form from '@talend/react-forms';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { formSubmit } from '../../actions/userActions';
 
 const formConfig = {
 	jsonSchema: {
@@ -41,7 +40,7 @@ const DrawerForm = props => {
 		...formConfig,
 		properties: props.item,
 	};
-	return (<Form data={formProps} onSubmit={(e, data) => props.onFormSubmit(data.formData)} />);
+	return (<Form data={formProps} onSubmit={(e, data) => props.onSubmit(data.formData)} />);
 };
 
 
@@ -50,13 +49,9 @@ const mapStateToProps = state => ({
 	id: state.users.selectedId,
 });
 
-const mapDispatchToProps = dispatch => ({
-	onFormSubmit: (id, formData) => dispatch(formSubmit(id, formData)),
-});
-
 DrawerForm.propTypes = {
 	item: PropTypes.object,
-	onFormSubmit: PropTypes.func,
+	onSubmit: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DrawerForm);
+export default connect(mapStateToProps)(DrawerForm);
