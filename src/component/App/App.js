@@ -7,6 +7,7 @@ import '@talend/bootstrap-theme/src/theme/theme.scss';
 import './app.scss';
 import Wrapper from './Wrapper';
 import User from '../User/Info';
+import UsersList from '../UsersList';
 import Repos from '../User/Repos';
 import store from '../../store';
 
@@ -20,6 +21,7 @@ const App = () => (
 				<Route path="/" component={Wrapper}>
 					<Route path="about" component={User} exact />
 					<Route path="repos" component={Repos} exact />
+					<Route path="users" component={UsersList} exact />
 				</Route>
 			</Router>
 		</Provider>

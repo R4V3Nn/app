@@ -2,6 +2,7 @@ import types from '../actions/types';
 
 const initialState = {
 	user: {},
+	users: [],
 	filteredRepos: null,
 	selectedIds: [],
 };
@@ -12,6 +13,11 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				user: action.payload,
+			};
+		case types.FETCH_USERS:
+			return {
+				...state,
+				users: action.payload,
 			};
 		case types.FETCH_USER_REPOS:
 			return {

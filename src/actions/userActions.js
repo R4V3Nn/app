@@ -9,6 +9,15 @@ export const fetchUser = id => dispach => {
 		}));
 };
 
+export const fetchUsers = () => dispach => {
+	fetch('https://api.github.com/users')
+		.then(res => res.json())
+		.then(data => dispach({
+			type: types.FETCH_USERS,
+			payload: data,
+		}));
+};
+
 export const fetchUserRepos = url => dispatch => {
 	fetch(url)
 		.then(res => res.json())

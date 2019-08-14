@@ -49,13 +49,13 @@ const defaultProps = props => ({
 		actionBar: {
 			actions: {
 				left: [
-					{
-						id: 'add',
-						label: 'Add Repo',
-						bsStyle: 'info',
-						icon: 'talend-plus-circle',
-						// onClick: () => console.log('add.onClick'),
-					},
+					// {
+					// 	id: 'add',
+					// 	label: 'Add Repo',
+					// 	bsStyle: 'info',
+					// 	icon: 'talend-plus-circle',
+					// 	// onClick: () => console.log('add.onClick'),
+					// },
 					{
 						id: 'delete',
 						label: 'Delete Repo',

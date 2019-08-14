@@ -13,6 +13,11 @@ const actions = [
 		icon: 'talend-hierarchical-view',
 		onClick: () => browserHistory.push('/repos'),
 	},
+	{
+		label: 'Users',
+		icon: 'talend-group-circle',
+		onClick: () => browserHistory.push('/users'),
+	},
 ];
 export default class Sidebar extends Component {
 	constructor() {

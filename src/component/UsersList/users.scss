@@ -1,0 +1,20 @@
+.users {
+	display: flex;
+	margin: 50px;
+
+	.info {
+		list-style: none;
+		font-size: 18px;
+	}
+
+	span { 
+		display: inline-block;
+		width: 150px;
+		font-weight: bold;
+     }
+    
+	a {
+		margin-left: 30px;
+	}
+
+}
