@@ -99,7 +99,7 @@
     "jest-environment-jsdom": "^24.0.0",
     "jest-environment-jsdom-global": "1.1.0",
     "mini-css-extract-plugin": "0.5.0",
-    "node-sass": "4.11.0",
+    "node-sass": "4.13.1",
     "node-zopfli": "2.0.3",
     "nodemon": "^1.19.1",
     "postcss-loader": "^3.0.0",
