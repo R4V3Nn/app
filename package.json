@@ -160,7 +160,7 @@
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
     "request": "2.88.0",
-    "urijs": "1.18.10",
+    "urijs": "1.19.9",
     "whatwg-fetch": "^2.0.3"
   }
 }
