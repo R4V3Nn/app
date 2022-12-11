@@ -130,7 +130,7 @@
     "country-list": "1.1.0",
     "cross-env": "^5.2.0",
     "eslint-loader": "^2.2.1",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "history": "3.0.0",
     "i18next": "^9.0.0",
     "i18next-browser-languagedetector": "^2.1.0",
